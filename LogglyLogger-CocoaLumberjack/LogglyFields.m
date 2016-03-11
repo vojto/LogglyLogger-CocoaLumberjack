@@ -23,9 +23,11 @@
             [dict setObject:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"] forKey:@"appname"];
         }
         [dict setObject:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"] forKey:@"appversion"];
+#if TARGET_OS_IPHONE
         [dict setObject:[UIDevice currentDevice].name forKey:@"devicename"];
         [dict setObject:[UIDevice currentDevice].model forKey:@"devicemodel"];
         [dict setObject:[UIDevice currentDevice].systemVersion forKey:@"osversion"];
+#endif
         [dict setObject:[self generateRandomStringWithSize:10] forKey:@"sessionid"];
         _fieldsDictionary = [NSDictionary dictionaryWithDictionary:dict];
     }
